@@ -9,5 +9,10 @@ before_install:
 script:
   - docker-compose run web python manage.py test
 
-after_install:
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t pdxdiver/django-web
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push pdxdiver/django-web;
+    fi
   - "ecs-cli compose --project-name ecs-hacko--user --file ecs-deploy.yml service up"
