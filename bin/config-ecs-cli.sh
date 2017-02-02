@@ -1,4 +1,7 @@
 #!/bin/bash
+sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+sudo chmod +x /usr/local/bin/ecs-cli
+
 ecs-cli configure \
   --region us-west-2 \
   --access-key $AWS_ACCESS_KEY \
@@ -7,10 +10,3 @@ ecs-cli configure \
   --compose-project-name-prefix " " \
   --compose-service-name-prefix " " \
   --cfn-stack-name-prefix " "
-
-ecs-cli up \
-  --keypair dan-ecs-west \
-  --capability-iam \
-  --size 1 \
-  --instance-type t2.large  \
-  --port 8000 \
