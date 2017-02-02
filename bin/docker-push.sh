@@ -1,5 +1,5 @@
 #! /bin/bash
-# Push only if it's not a pull request
+# Tag, Push and Deploy only if it's not a pull request
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     tag="pdxdiver/django-web:$COMMIT"
     orig="##TAG##"
