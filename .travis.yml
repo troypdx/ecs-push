@@ -10,7 +10,4 @@ before_install:
 script:
   - docker-compose run web python manage.py test
 after_success:
-  - export REPO=$DOCKER_USER
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - echo $REPO:$TAG:$COMMIT
   - ./bin/docker-push.sh
