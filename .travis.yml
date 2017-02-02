@@ -1,3 +1,7 @@
+# create a travis env variable to get the first 6 chars of the git commit hash. $TRAVIS_COMMIT has the full hash value.
+env:
+  global:
+     - COMMIT=${TRAVIS_COMMIT::6}
 sudo: required
 services:
   - docker
@@ -6,4 +10,7 @@ before_install:
 script:
   - docker-compose run web python manage.py test
 after_success:
+  - export REPO=$DOCKER_USER/k-auth
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - echo $REPO:$TAG:$COMMIT
   - ./bin/docker-push.sh
