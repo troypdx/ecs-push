@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Download, Install and Configure ecs-cli
-#change
+#change1
 
 if [ "$(uname)" == "Darwin" ]; then
   # Get the Mac binaries
