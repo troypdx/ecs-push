@@ -1,5 +1,7 @@
 #! /bin/bash
 # Tag, Push and Deploy only if it's not a pull request
+source ./bin/env.#!/bin/sh
+
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
     docker push "$DOCKER_REPO"/"$DOCKER_WEB_IMAGE":latest
