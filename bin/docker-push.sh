@@ -1,5 +1,6 @@
 #! /bin/bash
 # Tag, Push and Deploy only if it's not a pull request
+# Comment
 source ./bin/env.sh
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
