@@ -1,6 +1,6 @@
 #! /bin/bash
 # Tag, Push and Deploy only if it's not a pull request
-source ./bin/env.#!/bin/sh
+source ./bin/env.sh
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
